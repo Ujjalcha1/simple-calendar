@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import type { calenderProps } from "../types";
-import { formatDate } from "../utils";
-import "./App.css";
 import CalendarPopup from "./CalendarPopup";
+import { calenderProps } from "./types";
+import { formatDate } from "./Utils";
 
-export const Calendar = ({
+const Calendar = ({
   style,
   className,
   leftIcon,
@@ -12,11 +11,11 @@ export const Calendar = ({
   format,
   date = new Date(),
 }: calenderProps) => {
-  const [newDate, setNewDate] = useState<Date>(date || new Date());
+  const [newDate, setNewDate] = useState<Date>(date);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const popupRef = useRef<HTMLDivElement | null>(null);
 
-  const togglePopup = () => setIsOpen((prev) => !prev);
+  const togglePopup = () => setIsOpen((prev: boolean) => !prev);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -34,7 +33,7 @@ export const Calendar = ({
 
   return (
     <div
-      className={`calender${className ? ` ${className}` : ""}`}
+      className={`rjsc-calendar ${className ? ` ${className}` : ""}`}
       style={style}
       ref={popupRef}
     >
@@ -43,10 +42,12 @@ export const Calendar = ({
         <span>{formatDate(newDate, format)}</span>
       </div>
       <div style={{ width: "10%" }} onClick={togglePopup}>
-        {rightIcon ?? <div className="down-arrow-outline" />}
+        {rightIcon ?? <div className="rjsc-down-arrow-outline" />}
       </div>
 
       {isOpen && <CalendarPopup date={newDate} onChange={onChange} />}
     </div>
   );
 };
+
+export default Calendar;

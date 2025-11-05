@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { WEEK_SHORT } from "../constant";
-import type { calenderPopupProps } from "../types";
-import { MONTH_NAMES } from "../utils";
+import { WEEK_SHORT } from "./Constant";
+import { calenderPopupProps } from "./types";
+import { MONTH_NAMES } from "./Utils";
 
 const CalendarPopup = ({ date, onChange }: calenderPopupProps) => {
   const [currentDate, setCurrentDate] = useState(date);
-  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
-  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
+  const [currentYear, setCurrentYear] = useState(new Date(date).getFullYear());
+  const [currentMonth, setCurrentMonth] = useState(new Date(date).getMonth());
   const [dates, setDates] = useState<(number | null)[]>([]);
 
   useEffect(() => {
@@ -30,19 +30,19 @@ const CalendarPopup = ({ date, onChange }: calenderPopupProps) => {
 
   const onPreviousMonth = () => {
     if (currentMonth === 0) {
-      setCurrentYear((prev) => prev - 1);
+      setCurrentYear((prev: number) => prev - 1);
       setCurrentMonth(11);
     } else {
-      setCurrentMonth((prev) => prev - 1);
+      setCurrentMonth((prev: number) => prev - 1);
     }
   };
 
   const onNextMonth = () => {
     if (currentMonth === 11) {
-      setCurrentYear((prev) => prev + 1);
+      setCurrentYear((prev: number) => prev + 1);
       setCurrentMonth(0);
     } else {
-      setCurrentMonth((prev) => prev + 1);
+      setCurrentMonth((prev: number) => prev + 1);
     }
   };
 
@@ -54,25 +54,25 @@ const CalendarPopup = ({ date, onChange }: calenderPopupProps) => {
   };
 
   return (
-    <div className="calendar-popup p-4">
-      <div className="calendar-popup-content">
+    <div className="rjsc-calendar-popup p-4">
+      <div className="rjsc-rjsc-calendar-popup-content">
         {/* Header */}
-        <div className="calendar-header flex justify-between items-center">
-          <div className="left-arrow-outline" onClick={onPreviousMonth} />
+        <div className="rjsc-calendar-header flex justify-between items-center">
+          <div className="rjsc-left-arrow-outline" onClick={onPreviousMonth} />
           <span className="font-semibold text-lg">
             {MONTH_NAMES[currentMonth]} {currentYear}
           </span>
-          <div className="right-arrow-outline" onClick={onNextMonth} />
+          <div className="rjsc-right-arrow-outline" onClick={onNextMonth} />
         </div>
 
         {/* Weekday Header */}
-        <div className="week-list grid grid-cols-7 gap-1 text-center font-semibold mt-2">
+        <div className="rjsc-week-list grid grid-cols-7 gap-1 text-center font-semibold mt-2">
           {WEEK_SHORT.map((week, index) => (
             <div key={index}>{week}</div>
           ))}
         </div>
 
-        <div className="date-grid grid grid-cols-7 gap-1 text-center mt-2">
+        <div className="rjsc-date-grid grid grid-cols-7 gap-1 text-center mt-2">
           {dates.map((d, i) => {
             const isCurrentDate =
               currentDate &&
@@ -83,7 +83,9 @@ const CalendarPopup = ({ date, onChange }: calenderPopupProps) => {
             return (
               <div
                 key={i}
-                className={isCurrentDate ? "active-date" : "calendar-date"}
+                className={
+                  isCurrentDate ? "rjsc-active-date" : "rjsc-calendar-date"
+                }
                 onClick={() => onSelectDate(d)}
               >
                 {d ?? ""}
