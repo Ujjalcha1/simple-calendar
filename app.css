@@ -1,5 +1,5 @@
-.calendar {
-    width: 200px;
+.rjsc-calendar {
+    width: 100px;
     border: 1px solid #808000;
     border-radius: 4px;
     display: flex;
@@ -9,16 +9,16 @@
     justify-content: space-between;
 }
 
-.down-arrow-outline {
-    width: 12px;
-    height: 12px;
+.rjsc-down-arrow-outline {
+    width: 5px;
+    height: 5px;
     border-left: 2px solid black;
     border-bottom: 2px solid black;
     transform: rotate(-45deg);
     cursor: pointer;
 }
 
-.left-arrow-outline {
+.rjsc-left-arrow-outline {
     width: 12px;
     height: 12px;
     border-left: 2px solid black;
@@ -27,7 +27,7 @@
     cursor: pointer;
 }
 
-.right-arrow-outline {
+.rjsc-right-arrow-outline {
     width: 12px;
     height: 12px;
     border-left: 2px solid black;
@@ -36,15 +36,15 @@
     cursor: pointer;
 }
 
-.calendar-header {
+.rjsc-calendar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 8px 0;
-    margin: 8px 0;
+    margin-bottom: 15px;
 }
 
-.calendar-popup {
+.rjsc-calendar-popup {
     position: absolute;
     right: 0;
     background: white;
@@ -54,16 +54,16 @@
     z-index: 10;
     top: calc(100% + 4px);
     left: 0;
-    width: 100%;
+    width: 300px;
     padding: 16px;
 }
 
-.calendar-popup-content {
+.rjsc-rjsc-calendar-popup-content {
     font-size: 0.875rem;
     padding: 8px 0;
 }
 
-.week-list {
+.rjsc-week-list {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     text-align: center;
@@ -71,19 +71,19 @@
     margin-bottom: 8px;
 }
 
-.week-list div {
+.rjsc-week-list div {
     font-weight: bold;
     margin-bottom: 4px;
 }
 
-.date-grid {
+.rjsc-date-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     text-align: center;
     gap: 4px;
 }
 
-.date-grid div {
+.rjsc-date-grid div {
     height: 24px;
     width: 24px;
     padding: 4px;
@@ -92,13 +92,13 @@
     align-items: center;
 }
 
-.active-date {
+.rjsc-active-date {
     background-color: #007bff;
     border-radius: 50%;
     color: white;
     cursor: pointer;
 }
 
-.calendar-date {
+.rjsc-calendar-date {
     cursor: pointer;
 }

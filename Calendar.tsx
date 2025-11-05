@@ -33,7 +33,7 @@ const Calendar = ({
 
   return (
     <div
-      className={`calender${className ? ` ${className}` : ""}`}
+      className={`rjsc-calendar ${className ? ` ${className}` : ""}`}
       style={style}
       ref={popupRef}
     >
@@ -42,7 +42,7 @@ const Calendar = ({
         <span>{formatDate(newDate, format)}</span>
       </div>
       <div style={{ width: "10%" }} onClick={togglePopup}>
-        {rightIcon ?? <div className="down-arrow-outline" />}
+        {rightIcon ?? <div className="rjsc-down-arrow-outline" />}
       </div>
 
       {isOpen && <CalendarPopup date={newDate} onChange={onChange} />}
