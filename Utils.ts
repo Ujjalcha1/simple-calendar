@@ -64,9 +64,12 @@ export const getOrdinal = (n: number): string => {
   }
 };
 
-export const generateYears = (): number[] => {
+export const generateYears = (
+  startYear = START_YEAR,
+  endYear = END_YEAR
+): number[] => {
   const result: number[] = [];
-  for (let index = START_YEAR; index <= END_YEAR; index++) {
+  for (let index = startYear; index <= endYear; index++) {
     result.push(index);
   }
   return result;
@@ -100,13 +103,12 @@ export const formatDate = (
     a: date.getHours() >= 12 ? "pm" : "am",
   };
 
-  const tokens = Object.keys(map).sort((a, b) => b.length - a.length);
-  let formatted = format;
+  const tokenRegex = new RegExp(
+    Object.keys(map)
+      .sort((a, b) => b.length - a.length)
+      .join("|"),
+    "g"
+  );
 
-  tokens.forEach((token) => {
-    const regex = new RegExp(token, "g");
-    formatted = formatted.replace(regex, String(map[token]));
-  });
-
-  return formatted;
+  return format.replace(tokenRegex, (matched) => String(map[matched]));
 };
